@@ -1,47 +1,26 @@
-import { Autocomplete, Grid, TextField, Typography } from "@mui/material";
+import { Autocomplete, Button, Grid, TextField, Typography } from "@mui/material";
 import { UserType } from "./types/user.type";
 import { useState } from "react";
+import theme from "theme";
 
-export default function SideBar({users} : {users: Array<UserType>}) {
+export default function SideBar(
+  {users, setChat} : {users: Array<UserType>, setChat: (name: string) => void}) {
   const [inputText, setInputText] = useState('');
-  const [data, setData] = useState<string[]>([]);
 
   return (
     <Grid 
       item
-      style={{}}
+      sx={{
+        flex: 1, 
+        display: 'flex', 
+        flexDirection: 'column',
+        padding: '10px',
+        // height:'100%'
+      }}
     >
-      <Typography>Work chat</Typography>
-      {/* <Autocomplete
-          data-elem="search-input"
-          value={inputText}
-          data={data}
-          size='md'
-          radius={'8px'}
-          onChange={(inputText) => {
-            setInputText(inputText);
-            if (inputText.length === 0)
-              setIsSearch(false);
-          }}
-          icon={<IconSearch />}
-          rightSection={
-            <Button
-              data-elem="search-button"
-              size="xs"
-              sx={{
-                padding: '4px 20px',
-                borderRadius: '8px',
-                marginRight: '52px'
-              }}
-              onClick={() => findVacance()}
-            >
-              Поиск
-            </Button>
-          }
-          placeholder="Введите название вакансии"
-          sx={{ width: '100%', height: '48px' }}
-        /> */}
-
+      <Typography align="center" gutterBottom={true} variant="h2" mt={2}>
+        Work chat
+      </Typography>
       <Autocomplete
         freeSolo
         id="search"
@@ -50,14 +29,35 @@ export default function SideBar({users} : {users: Array<UserType>}) {
         renderInput={(params) => (
           <TextField
             {...params}
-            label="Search input"
+            label="Search"
             InputProps={{
               ...params.InputProps,
               type: 'search',
             }}
           />
         )}
+        value={inputText}
+        onChange={(event, value) => {
+          // setInputText(value);
+          setChat(value);
+          // if (inputText.length === 0)
+          //   setIsSearch(false);
+        }}
       />
+      {/* <Button 
+        sx={{
+          marginTop: 'auto',
+          alignSelf: 'flex-start',
+          bgcolor: theme.palette.primary.main,
+          color: 'white',
+          '&:hover': {
+            color: 'white',
+            bgcolor: theme.palette.primary.light
+          }
+        }}
+      >
+        Create chat
+      </Button> */}
     </Grid>
   )
 }

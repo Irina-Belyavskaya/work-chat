@@ -72,14 +72,12 @@ export default createTheme({
           color: colors.default.white,
         },
         h2: {
-          fontFamily: 'Norwester',
           fontSize: '28px',
           lineHeight: '33.6px',
           color: colors.default.brand_primary,
           textTransform: 'uppercase',
         },
         h3: {
-          fontFamily: 'Norwester',
           fontSize: '20px',
           lineHeight: '24px',
           color: colors.default.brand_primary,

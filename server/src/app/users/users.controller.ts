@@ -13,5 +13,4 @@ export class UsersController {
   async getUsers() {
     return await this.userService.getUsers();
   }
-
 }

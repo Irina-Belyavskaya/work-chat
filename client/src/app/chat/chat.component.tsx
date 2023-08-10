@@ -1,5 +1,4 @@
 import { Grid, TextField, Typography } from "@mui/material";
-import theme from "theme";
 
 export default function Chat({userName} : {userName: string}) {
   return (
@@ -42,8 +41,6 @@ export default function Chat({userName} : {userName: string}) {
             variant="body1"
             sx={{
               textAlign: "center",
-              // marginTop: 'auto',
-              // marginBottom: 'auto'
               alignSelf: 'center'
             }}
           >

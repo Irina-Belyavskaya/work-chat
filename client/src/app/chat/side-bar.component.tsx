@@ -1,11 +1,8 @@
-import { Autocomplete, Button, Grid, TextField, Typography } from "@mui/material";
+import { Autocomplete, Grid, TextField, Typography } from "@mui/material";
 import { UserType } from "./types/user.type";
-import { useState } from "react";
-import theme from "theme";
 
 export default function SideBar(
-  {users, setChat} : {users: Array<UserType>, setChat: (name: string) => void}) {
-  const [inputText, setInputText] = useState('');
+  {users, setChat} : {users: Array<UserType>, setChat: (name: string, email: string) => void}) {
 
   return (
     <Grid 
@@ -15,7 +12,6 @@ export default function SideBar(
         display: 'flex', 
         flexDirection: 'column',
         padding: '10px',
-        // height:'100%'
       }}
     >
       <Typography align="center" gutterBottom={true} variant="h2" mt={2}>
@@ -25,7 +21,7 @@ export default function SideBar(
         freeSolo
         id="search"
         disableClearable
-        options={users.map((user) => user.name)}
+        options={users.map((user) => user.name + ' - '+ user.email)}
         renderInput={(params) => (
           <TextField
             {...params}
@@ -36,28 +32,11 @@ export default function SideBar(
             }}
           />
         )}
-        value={inputText}
         onChange={(event, value) => {
-          // setInputText(value);
-          setChat(value);
-          // if (inputText.length === 0)
-          //   setIsSearch(false);
+          const [name, email] = value.split('-').map(el => el.trim());
+          setChat(name, email);
         }}
       />
-      {/* <Button 
-        sx={{
-          marginTop: 'auto',
-          alignSelf: 'flex-start',
-          bgcolor: theme.palette.primary.main,
-          color: 'white',
-          '&:hover': {
-            color: 'white',
-            bgcolor: theme.palette.primary.light
-          }
-        }}
-      >
-        Create chat
-      </Button> */}
     </Grid>
   )
 }

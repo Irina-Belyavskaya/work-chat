@@ -5,6 +5,8 @@ import { TypeOrmModule } from '@nestjs/typeorm';
 import { dataSourceOptions } from './config/typeOrm.config';
 import { UsersModule } from './app/users/users.module';
 import { SecurityModule } from './app/security/security.module';
+import { ChatModule } from './chat/chat.module';
+import { MessagesModule } from './messages/messages.module';
 
 @Module({
   imports: [
@@ -14,7 +16,9 @@ import { SecurityModule } from './app/security/security.module';
     TypeOrmModule.forRoot(dataSourceOptions),
     AuthModule,
     UsersModule,
-    SecurityModule
+    SecurityModule,
+    ChatModule,
+    MessagesModule
   ],
   controllers: [],
   providers: [],

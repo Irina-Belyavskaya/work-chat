@@ -1,6 +1,8 @@
 import { DataSource, DataSourceOptions } from "typeorm";
 import { config } from "dotenv";
 import { UserEntity } from "src/app/users/entities/user.entity";
+import { ChatEntity } from "src/chat/entities/chat.entity";
+import { MessageEntity } from "src/messages/entities/message.entity";
 
 // ============ Entities ================
 
@@ -25,7 +27,7 @@ export const dataSourceOptions: DataSourceOptions = {
   // migrations: [],
   // migrationsRun: true,
   synchronize: true,
-  entities: [UserEntity],
+  entities: [UserEntity, ChatEntity, MessageEntity],
 };
 
 const dataSource = new DataSource(dataSourceOptions);
